@@ -2,7 +2,7 @@ import * as THREE from 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r124/thr
 //import * as THREE from 'https://unpkg.com/three/build/three.module.js';
 import  {OrbitControls}  from 'https://threejs.org/examples/jsm/controls/OrbitControls.js'
 // import {FBXLoader} from "../three.js-master/examples/jsm/loaders/FBXLoader.js"
-import {FBXLoader} from '../jsm/loaders/FBXLoader.js'
+import {FBXLoader} from '../three.js-master/examples/jsm/loaders/FBXLoader.js'
 import { GLTFLoader } from "https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/loaders/GLTFLoader.js";
 
 
@@ -282,7 +282,7 @@ export default class threeScene extends HTMLElement {
 
 	const delta = this.clock.getDelta();
     if (this.mixer) {
-		console.log(this.mixer);
+		
       this.mixer.update(delta);
 
       this.mixer._root.oldValue += 0.003;

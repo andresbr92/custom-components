@@ -49,7 +49,7 @@ export default class Navbar extends HTMLElement {
       
       <div class='container'>
         <div class='containerLogo'>
-          <img class='logo' src='../components/3dmodels/Beefeater-Logo.png' />
+          <img class='logo' src='components/3dmodels/Beefeater-Logo.png' />
           <div class='spirit'>
             <h2>Spirit of London</h2>  
             <h3>Since 1820</h3>
