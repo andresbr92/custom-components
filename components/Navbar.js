@@ -3,8 +3,17 @@ export default class Navbar extends HTMLElement {
     super()
   }
 
+
+
   connectedCallback() {
-    const shadowRoot = this.attachShadow({ mode: "open" })
+   
+
+   
+    
+
+     
+    
+    const shadowRoot = this.attachShadow({ bubbles:true ,mode: "open" })
     shadowRoot.innerHTML = `
       <style>
       .container {
@@ -57,15 +66,43 @@ export default class Navbar extends HTMLElement {
         </div>
         <div class='containerButtons'>
         <button class='mybutton'>Mundo</button>
-        <button class='mybutton'>Beefeater</button>
+        <button id="beefeater" class='mybutton'>Beefeater</button>
         <button class='mybutton'>Light</button>
         <button class='mybutton'>Pink</button>
         <button class='mybutton'>24</button>
-
         </div>
       </div>
       `;
+      
+      const buttons =  this.shadowRoot.querySelectorAll("button")
+      buttons.forEach(elm => {
+        
+
+        elm.addEventListener("click", e => {
+          e.preventDefault();
+          // Hago mis cálculos
+          switch (elm.innerHTML) {
+            case "Beefeater":
+              this.dispatchEvent(new CustomEvent("miClick",{bubbles: true,detail: elm.innerHTML}));
+            case "Mundo":
+              this.dispatchEvent(new CustomEvent("miClick",{bubbles: true,detail: elm.innerHTML}));
+            case "Light":
+              this.dispatchEvent(new CustomEvent("miClick",{bubbles: true,detail: elm.innerHTML}));
+            case "Pink":
+              this.dispatchEvent(new CustomEvent("miClick",{bubbles: true,detail: elm.innerHTML}));
+            case "24":
+              this.dispatchEvent(new CustomEvent("miClick",{bubbles: true,detail: elm.innerHTML}));
+          }
+          
+          
+        });
+      })
+      
+      
   }
+
+ 
 }
+
 
 customElements.define("nav-bar", Navbar);

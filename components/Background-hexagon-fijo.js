@@ -6,119 +6,35 @@ class Backgridfijo extends HTMLElement {
     connectedCallback() {
       const shadowRoot = this.attachShadow({ mode: "open" });
       shadowRoot.innerHTML = `
-        <style>
-        #grid {
-            position: relative;
-            width: 78%;
-            margin: 0 auto;
-            padding: 0; /* Clears unordered list default of 40px */
+      <style>
+        #Capa_1 {
+          height:100%;
+          width: 100%;
+
         }
-        
-        .clear:after {
-            content: "";
-            display: block;
-            clear: both;
+        div {
+          display:inline-block;
+          background-color:red;
+          width: 10vw;
+          height:5vh;
         }
-        #grid li {
-            list-style-type: none;
-            position: relative;
-            float: left;
-            width: 27.85714285714286%;
-            padding: 0 0 32.16760145166612% 0;
-            -o-transform: rotate(-60deg) skewY(30deg);
-            -moz-transform: rotate(-60deg) skewY(30deg);
-            -webkit-transform: rotate(-60deg) skewY(30deg);
-            -ms-transform: rotate(-60deg) skewY(30deg);
-            transform: rotate(-60deg) skewY(30deg);
-            background: fd005f;
-            overflow: hidden;
-        }
-        #grid li .hexagon {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            -o-transform: skewY(-30deg) rotate(60deg);
-            -moz-transform: skewY(-30deg) rotate(60deg);
-            -webkit-transform: skewY(-30deg) rotate(60deg);
-            -ms-transform: skewY(-30deg) rotate(60deg);
-            transform: skewY(-30deg) rotate(60deg);
-            overflow: hidden;
-            -webkit-transition: background-color 2s ease-out;
-            -moz-transition: background-color 2s ease-out;
-            -o-transition: background-color 2s ease-out;
-            transition: background-color 2s ease-out;
-            
-        }
-        .hexagon:hover {
-            
-            background-color:rgba(236, 182, 84, 0.5);
-          }
-        #grid li * {
-            visibility: visible;
-        }
-        #grid li:nth-child(2) {
-            margin: 0 1%;
-          }
-        #grid li:nth-child(3n+2) {
-            margin: 0 1%;
-          }
-          #grid li:nth-child(6n+4), #grid li:nth-child(6n+5), #grid li:nth-child(6n+6) {
-            margin-top: -6.9285714285%;
-            margin-bottom: -6.9285714285%;
-            -o-transform: translateX(50%) rotate(-60deg) skewY(30deg);
-            -moz-transform: translateX(50%) rotate(-60deg) skewY(30deg);
-            -webkit-transform: translateX(50%) rotate(-60deg) skewY(30deg);
-            -ms-transform: translateX(50%) rotate(-60deg) skewY(30deg);
-            transform: translateX(50%) rotate(-60deg) skewY(30deg);
-        }
-        #grid li:nth-child(6n+4) { 
-            margin-left: 0.5%;
-        }
-       
-            
-        </style>
-        
-    <ul id="grid" class="clear">
-        <li>
-            <div class="hexagon"></div>
-        </li>
-        <li>
-            <div class="hexagon"></div>
-        </li>
-        <li>
-            <div class="hexagon"></div>
-        </li>
-        <li>
-            <div class="hexagon"></div>
-        </li>
-        <li>
-            <div class="hexagon"></div>
-        </li>
-        <li>
-            <div class="hexagon"></div>
-        </li>
-        <li>
-            <div class="hexagon"></div>
-        </li>
-        <li>
-            <div class="hexagon"></div>
-        </li>
-        <li>
-            <div class="hexagon"></div>
-        </li>
-        <li>
-            <div class="hexagon"></div>
-        </li>
-        <li>
-            <div class="hexagon"></div>
-        </li>
-        <li>
-            <div class="hexagon"></div>
-        </li>
-        
-    </ul>
+      </style>
+      
+
+     <div>
+      <?xml version="1.0" encoding="iso-8859-1"?>
+      <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+      <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+      	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+      	<g>
+      		<path d="M510.432,249.597L388.297,38.537c-2.096-3.631-5.967-5.378-10.159-5.378H133.861c-4.192,0-8.063,1.747-10.159,5.378
+      			L1.567,249.841c-2.09,3.631-2.09,7.976,0,11.607l122.135,211.535c2.096,3.632,5.967,5.858,10.159,5.858h244.276
+      			c4.192,0,8.063-2.288,10.159-5.919l122.135-211.569C512.523,257.722,512.523,253.228,510.432,249.597z M371.369,455.384H140.63
+      			L25.27,256.003L140.63,56.616h230.738l115.36,199.387L371.369,455.384z"/>
+      	</g>
+      </svg>
+    </div>
+
         `;
     }
   }

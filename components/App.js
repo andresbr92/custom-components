@@ -4,7 +4,9 @@ export default class MyApp extends HTMLElement {
   }
 
   connectedCallback() {
-    const shadowRoot = this.attachShadow({mode:'open'})
+    
+
+    const shadowRoot = this.attachShadow({bubbles:true,mode:'open'})
     shadowRoot.innerHTML = `
     <style>
         .wrap {

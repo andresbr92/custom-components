@@ -4,24 +4,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="App.css" />
     <script src="./components/App.js"></script>
+    <script src="./components/Background-hexagon-fijo.js"></script>
 
     <title>Document</title>
   </head>
   <body>
     <my-app>
-      <nav-bar></nav-bar>
-      <wc-router>
-        
-        <three-scene></three-scene>
-        <wc-outlet></wc-outlet>
-      </wc-router>
-      
+     
+      <nav-bar id="navbar"></nav-bar>
+      <three-scene></three-scene>
+      <fabs-camera></fabs-camera>
+    
     </my-app>
    
     <script type="module" src="./components/router.js"></script>
     <script type="module" src="./components/index.js"></script>
     <script type="module" src="./components/cubethree.js"></script>
-    
+    <script type="module" src="./components/camera.js"></script>
   </body>
   </html>
 

@@ -13,6 +13,13 @@ export default class threeScene extends HTMLElement {
     const template = document.createElement("template");
     template.innerHTML = `
 <style>
+#c{
+  width: 100%;
+  height: 80%;
+  background: transparent; 
+  text-align:center;
+  position:fixed;
+}
 
 
 
@@ -30,6 +37,13 @@ export default class threeScene extends HTMLElement {
     // this.renderer.render(this.scene, this.camera); // works without animation
     this.renderScene(); // should call this.render every frame
   }
+  static get observedAttributes() {
+    return ["beefeater"];
+  }
+  attributeChangedCallback(name, oldValue, newValue) {
+    console.log(name, oldValue, newValue)
+  }
+ 
 
   init() {
     const width = window.innerWidth;
@@ -93,6 +107,7 @@ export default class threeScene extends HTMLElement {
     let loading;
     this.textEmergent = '1'
     this.count = 0
+    this.buttonValue = ''
     /////////////////
     //call methods//
     ///////////////
@@ -101,6 +116,20 @@ export default class threeScene extends HTMLElement {
     this.addModels();
     this.loaders();
     this.customModels()
+    this.buttonsClicked()
+  }
+  buttonsClicked() {
+    const outer = document.getElementById("navbar")
+    
+    outer.addEventListener("miClick", e => {
+      
+      if (this.buttonValue != '') {
+        this.buttonValue = ''
+      } else {
+        this.buttonValue = e.detail
+      }
+      console.log(this.buttonValue)
+    });
   }
   customModels() {
     const gltfLoader = new GLTFLoader()
@@ -118,7 +147,7 @@ export default class threeScene extends HTMLElement {
       '../components/3dmodels/Walking (8).fbx',
       (obj) => {
 		 obj.scale.setScalar(0.05);
-		 console.log(obj);
+		 
 
          this.mixer = new THREE.AnimationMixer(obj);
 
@@ -140,7 +169,7 @@ export default class threeScene extends HTMLElement {
          obj.oldValue = 0.01;
       },
       (xhr) => {
-        console.log((xhr.loaded / xhr.total * 100) + '% loaded')
+        // console.log((xhr.loaded / xhr.total * 100) + '% loaded')
       },
       (error) => {
         console.log(error);
@@ -194,85 +223,59 @@ export default class threeScene extends HTMLElement {
 
   
   animate = () => {
-    this.renderScene();
-    this.controls.update();
-    this.frameId = window.requestAnimationFrame(this.animate);
+    
 
     //parte de tocables//
 
-    // if ( true) {
-    //   //esta es la parte del texto a refactorizar//
-    //   // this.textEmergent = 'beefeater'
-    //   // if(this.count < 1) {
-    //   //   console.log('hola');
-    //   //   this.addText(this.textEmergent)
-    //   // }
-    //   // this.count += 1
+    if (this.buttonValue === "Beefeater") {
+     
+      const distanceFromCamera = 30; // 3 units
+      const target = new THREE.Vector3(+10, 0, -distanceFromCamera);
+      target.applyMatrix4(this.camera.matrixWorld);
+      const moveSpeed = 1;
+      const distance = this.beefeater.position.distanceTo(target);
 
-    //   //hasta aqui la parte del texto//
+      const distanceToCamera = this.camera.position.distanceTo(
+        this.cameraOrigin
+      );
 
-    //   const distanceFromCamera = 30; // 3 units
-    //   const target = new THREE.Vector3(+10, 0, -distanceFromCamera);
-    //   target.applyMatrix4(this.camera.matrixWorld);
-    //   const moveSpeed = 1;
-    //   const distance = this.beefeater.position.distanceTo(target);
+      if (distance > 0) {
+        const amount = Math.min(moveSpeed, distance) / distance;
+        this.beefeater.position.lerp(target, amount);
+        this.beefeater.rotation.x = this.camera.rotation.x;
+        this.beefeater.rotation.y = this.camera.rotation.y;
+        this.beefeater.rotation.z = this.camera.rotation.z;
 
-    //   const distanceToCamera = this.camera.position.distanceTo(
-    //     this.cameraOrigin
-    //   );
+        this.camera.position.lerp(
+          this.cameras[0].getWorldPosition(new THREE.Vector3()),
+          0.05
+        );
 
-    //   if (distance > 0) {
-    //     const amount = Math.min(moveSpeed, distance) / distance;
-    //     this.beefeater.position.lerp(target, amount);
-    //     this.beefeater.rotation.x = this.camera.rotation.x;
-    //     this.beefeater.rotation.y = this.camera.rotation.y;
-    //     this.beefeater.rotation.z = this.camera.rotation.z;
-
-    //     this.camera.position.lerp(
-    //       this.cameras[0].getWorldPosition(new THREE.Vector3()),
-    //       0.05
-    //     );
-
-    //     this.controls.enabled = false;
-    //   }
-    // }
-
-    // if (false) {
-    //   //this.scene.remove(this.textMesh)
-    //   this.count = 0
-    //     const target = new THREE.Vector3(
-    //     this.beefeater.oldPosition.x,
-    //     this.beefeater.oldPosition.y,
-    //     this.beefeater.oldPosition.z
-    //   );
-    //   const moveSpeed = 1;
-    //   const distance = this.beefeater.position.distanceTo(target);
-    //   if (distance > 0) {
-    //     const amount = Math.min(moveSpeed, distance) / distance;
-    //     this.beefeater.position.lerp(target, amount);
-    //     this.beefeater.rotation.x = this.beefeater.oldRotation.x;
-    //     this.beefeater.rotation.y = this.beefeater.oldRotation.y;
-    //     this.beefeater.rotation.z = this.beefeater.oldRotation.z;
-    //     this.controls.enabled = true;
-    //   }
-    // }
-
-    //person movements//
-    const delta = this.clock.getDelta();
-    if (this.mixer) {
-		console.log('hola que tal soy el mixer ');
-      this.mixer.update(delta);
-
-      this.mixer._root.oldValue += 0.003;
-
-    //   if (this.mixer._root.oldValue) {
-    //     this.mixer._root.position.x =
-    //       20 * Math.sin(this.mixer._root.oldValue) + 25;
-    //     this.mixer._root.position.y =
-    //       20 * Math.cos(this.mixer._root.oldValue) + 25;
-    //     this.mixer._root.rotation.y = Math.cos(this.mixer._root.oldValue);
-    //   }
+        this.controls.enabled = false;
+      }
     }
+
+    if (!this.buttonValue) {
+      //this.scene.remove(this.textMesh)
+      this.count = 0
+        const target = new THREE.Vector3(
+        this.beefeater.oldPosition.x,
+        this.beefeater.oldPosition.y,
+        this.beefeater.oldPosition.z
+      );
+      const moveSpeed = 1;
+      const distance = this.beefeater.position.distanceTo(target);
+      if (distance > 0) {
+        const amount = Math.min(moveSpeed, distance) / distance;
+        this.beefeater.position.lerp(target, amount);
+        this.beefeater.rotation.x = this.beefeater.oldRotation.x;
+        this.beefeater.rotation.y = this.beefeater.oldRotation.y;
+        this.beefeater.rotation.z = this.beefeater.oldRotation.z;
+        this.controls.enabled = true;
+      }
+    }
+
+   
   };
  
 
@@ -295,6 +298,7 @@ export default class threeScene extends HTMLElement {
         this.mixer._root.rotation.y = Math.cos(this.mixer._root.oldValue);
       }
     }
+    this.animate()
 
     
 
