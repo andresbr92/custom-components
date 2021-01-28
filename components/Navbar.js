@@ -18,7 +18,7 @@ export default class Navbar extends HTMLElement {
       <style>
       .container {
         width: 100%;
-        height:20%;
+        height:20vh;
       }
       .containerLogo {
         width:100%;

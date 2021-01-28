@@ -47,11 +47,8 @@ export default class Camera extends HTMLElement {
     this.innerHTML = `
         <style>
         #video {
-        
-        height: 80vh;
         z-index:-100;
         position:fixed;
-
         }
         
         </style>
