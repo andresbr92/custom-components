@@ -49,6 +49,9 @@ export default class Camera extends HTMLElement {
         #video {
         width: 100%;
         height: 80vh;
+        z-index:-100;
+        position:fixed;
+
         }
         
         </style>

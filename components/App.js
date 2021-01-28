@@ -12,7 +12,6 @@ export default class MyApp extends HTMLElement {
         .wrap {
             width: 100vw;
             height: 100vh;
-            background-color: white;
         }
     </style>
     <div class='wrap'>
