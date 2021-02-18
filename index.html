@@ -3,61 +3,44 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="App.css" />
-    <script src="./components/App.js"></script>
-    <script src="./components/Background-hexagon-fijo.js"></script>
+    <style>
+      * {
+        border: 0;
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+      }
+      #render {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+      }
+      #camera {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+      }
+    </style>
 
     <title>Document</title>
   </head>
   <body>
-    <my-app>
-     
-      <nav-bar id="navbar"></nav-bar>
-      <three-scene></three-scene>
-      <fabs-camera></fabs-camera>
-    
-    </my-app>
-   
-    <script type="module" src="./components/router.js"></script>
+    <fabs-navbar></fabs-navbar>
+    <fabs-camera></fabs-camera>
+    <div id="render"></div>
+
     <script type="module" src="./components/index.js"></script>
     <script type="module" src="./components/cubethree.js"></script>
     <script type="module" src="./components/camera.js"></script>
   </body>
-  </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  <!-- <nav class="nav">
-    <ul>
-      <li><a route="/">Home</a></li>
-      <li><a route="/starwars/">Starwars</a></li>
-      <li><a route="/contact/">Contact</a></li>
-      <li><a route="/users">Users</a></li>
-      <li><a route="/misc">Misc</a></li>
-    </ul>
-  </nav>
-  <wc-route path="/" title="Home" component="three-scene"></wc-route>
-  <wc-route path="/starwars" title="Starwars" component="dinamic-component"></wc-route>
-  <wc-route path="/contact" title="Contact" component="back-grid"></wc-route>
-  <wc-route path="/users" title="Users" component="three-scene"></wc-route> -->
+</html>

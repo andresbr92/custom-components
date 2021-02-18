@@ -4,7 +4,7 @@ export default class MyApp extends HTMLElement {
   }
 
   connectedCallback() {
-    
+    //template investigar 
 
     const shadowRoot = this.attachShadow({bubbles:true,mode:'open'})
     shadowRoot.innerHTML = `

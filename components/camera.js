@@ -2,12 +2,7 @@
 
 export default class Camera extends HTMLElement {
     connectedCallback() {
-    function isMobile() {
-      const isAndroid = /Android/i.test(navigator.userAgent);
-      const isiOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-      return isAndroid || isiOS;
-    }
-
+  
     async function setupCamera() {
       const isPortrait = true; // do logic here
 
@@ -47,15 +42,17 @@ export default class Camera extends HTMLElement {
     this.innerHTML = `
         <style>
         #video {
-        z-index:-100;
-        position:fixed;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 1;
         }
         
         </style>
 
-        <div id="wrap">
          <video id="video"></video>
-       </div>
     
     `
     let video = document.getElementById("video");

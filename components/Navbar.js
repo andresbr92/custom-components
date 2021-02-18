@@ -1,108 +1,97 @@
 export default class Navbar extends HTMLElement {
   constructor() {
-    super()
+    super();
   }
-
-
 
   connectedCallback() {
-   
-
-   
-    
-
-     
-    
-    const shadowRoot = this.attachShadow({ bubbles:true ,mode: "open" })
+    const shadowRoot = this.attachShadow({ mode: "open" });
     shadowRoot.innerHTML = `
-      <style>
-      .container {
+    <style>
+      #container {
         width: 100%;
-        height:20vh;
+        height: 20vh;
       }
-      .containerLogo {
-        width:100%;
-        height:50%;
-        text-align:center;
-        display:flex;
-        justify-content:space-between;
-        align-items:center;
-        font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+      #top-bar {
+        margin-top:20px;
+        width: 100%;
+        height: 60%;
+        text-align: center;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
       }
-      .containerButtons {
-        width:100%;
-        height:50%;
-        display:flex;
-        justify-content:space-between;
-        align-items:center;
-      }
-      .logo {
-        width:30%;
-        top:0;
-        left:0;
+      #logo {
+        width:50%;
         height:100%;
       }
-      .spirit {
-        width:70%;
-        color:#a21715;
-      }
-      .mybutton {
+      #spirit {
+        width:50%;
         height:100%;
-        width:100%;
-        background: #a21715;
-        color: white;
+      }
+      .image{
+        width:75%;
+      }
+      #buttons-container {
+        width: 100%;
+        height: 40%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #ce102d;
+        
+      }
+      .each-button {
+        font-size:12px;
+        display: flex;
+        align-items: center;
+        height: 70%;
+        width: 90%;
+        border-radius: 40px;
         border:none;
+        text-transform: uppercase;
+        background-color:#ce102d;
+        color:white;
+        font-weight:bold;
       }
-          
-      </style>
+      .circle {
+        margin-right: 2vw;
+        margin-left: 2vw;
+        height: 30px;
+        width: 30px;
+        background-color: white;
+        border-radius: 50%;
+        color: #ce102d;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight:bold;
+      }
+
       
-      <div class='container'>
-        <div class='containerLogo'>
-          <img class='logo' src='components/3dmodels/Beefeater-Logo.png' />
-          <div class='spirit'>
-            <h2>Spirit of London</h2>  
-            <h3>Since 1820</h3>
-          </div>
+    
+    </style>
+
+    <div id = 'container'>
+      <div id = 'top-bar'>
+        <div id='logo'>
+          <img class='image' src='../images/Beefeater-Logo.png' />
         </div>
-        <div class='containerButtons'>
-        <button class='mybutton'>Mundo</button>
-        <button id="beefeater" class='mybutton'>Beefeater</button>
-        <button class='mybutton'>Light</button>
-        <button class='mybutton'>Pink</button>
-        <button class='mybutton'>24</button>
+        <div id='spirit'>
+          <img class='image' src='../images/spirit.png' />
         </div>
       </div>
+
+      <div id='buttons-container'>
+        <button class = 'each-button'><p class = 'circle'>1</p>instrucciones</button>
+        <button class = 'each-button'><p class = 'circle'>2</p>carta</button>
+        <button class = 'each-button'><p class = 'circle'>3</p>sorteo</button>
+      </div>
+    
+    
+    
+    </div>
       `;
-      
-      const buttons =  this.shadowRoot.querySelectorAll("button")
-      buttons.forEach(elm => {
-        
-
-        elm.addEventListener("click", e => {
-          e.preventDefault();
-          // Hago mis cálculos
-          switch (elm.innerHTML) {
-            case "Beefeater":
-              this.dispatchEvent(new CustomEvent("miClick",{bubbles: true,detail: elm.innerHTML}));
-            case "Mundo":
-              this.dispatchEvent(new CustomEvent("miClick",{bubbles: true,detail: elm.innerHTML}));
-            case "Light":
-              this.dispatchEvent(new CustomEvent("miClick",{bubbles: true,detail: elm.innerHTML}));
-            case "Pink":
-              this.dispatchEvent(new CustomEvent("miClick",{bubbles: true,detail: elm.innerHTML}));
-            case "24":
-              this.dispatchEvent(new CustomEvent("miClick",{bubbles: true,detail: elm.innerHTML}));
-          }
-          
-          
-        });
-      })
-      
-      
   }
-
- 
 }
 
-
-customElements.define("nav-bar", Navbar);
+customElements.define("fabs-navbar", Navbar);
