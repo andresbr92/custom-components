@@ -9,10 +9,9 @@ export default class Navbar extends HTMLElement {
     <style>
       #container {
         width: 100%;
-        height: 20vh;
+        height: 20%;
       }
       #top-bar {
-        margin-top:20px;
         width: 100%;
         height: 60%;
         text-align: center;

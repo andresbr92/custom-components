@@ -13,6 +13,7 @@
       body {
         width: 100%;
         height: 100%;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
       }
       #render {
         position: absolute;
@@ -36,11 +37,15 @@
   </head>
   <body>
     <fabs-navbar></fabs-navbar>
+ 
     <fabs-camera></fabs-camera>
-    <div id="render"></div>
+    <!-- <div id="render"></div> -->
+    <fabs-instructions></fabs-instructions>
 
-    <script type="module" src="./components/index.js"></script>
+    <script type="module" src="./components/Navbar.js"></script>
     <script type="module" src="./components/cubethree.js"></script>
+    <script type="module" src="./components/instructions.js"></script>
+
     <script type="module" src="./components/camera.js"></script>
   </body>
 </html>
